@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<!-- view form -->
+		<record id="view_cogito_mutual_form_inherit" model="ir.ui.view">
+			<field name="name">Cogito Mutual form</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form" />
+			<field name="priority">30</field>
+			<field name="arch" type="xml">
+
+				<!--The oe_highlight class gives the button a red color when it is saved. -->
+
+				<field name="state" position="before">
+					<button string="Crea reciproco" type="object" name="generate_cogito_mutual" />
+				</field>
+
+				<field name="period_id" position="after">
+					<label for="reciproco">Reciproco</label>
+					<!-- <field name="reciproco" /> -->
+					<button string="Vai al reciproco" type="object" name="visit_cogito_mutual" />
+					<!-- attrs="{'invisible': [('reciproco', '=', '')]}" -->
+				</field>
+
+			</field>
+	    </record>
+
+	</data>
+</openerp>
