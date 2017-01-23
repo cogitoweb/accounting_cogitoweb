@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <openerp>
+        <data>
+                       
+            <menuitem name="Cogito" id="Cogito_menu" sequence="1" parent="base.menu_custom" />
+            <menuitem name="Recalculate Accounts Chart" id="ricalcola_piano_conti_menu_item" parent="Cogito_menu" action="piano_conti_action" />
+            <menuitem name="Recalculate Tree" id="ricalcola_struttura_menu_item" parent="Cogito_menu" action="struttura_albero_action" />
+                 
+        </data>
+    </openerp>

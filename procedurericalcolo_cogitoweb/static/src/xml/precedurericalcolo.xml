@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+
+            
+    <t t-name="PianoDeiConti">
+        
+        <div class="proc-ric-container">      
+            <h1 class="proc-ric-title">Pannello di controllo della procedura di ricalcolo</h1>        
+            <button class="proc-ric-button" onclick="Ricalcola()">Ricalcola il piano dei conti</button>   
+            <strong id="output_risultato"></strong> 
+            
+
+            
+        </div>
+        
+        <script>
+        function Ricalcola() {          //avvisa se la procedura e' andata a buon fine o meno
+                openerp.session.rpc('/cogito/procedurericalcolo', 
+                    {}
+                ).then(function (out) {         
+                    $('#output_risultato').text(out.query_out).addClass("show");                    
+                }, function () {
+                    alert("procedura non andata a buon fine");
+                });
+        }
+        
+        </script>
+        
+    </t>
+    
+</templates>

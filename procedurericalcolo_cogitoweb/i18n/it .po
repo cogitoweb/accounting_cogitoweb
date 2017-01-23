@@ -1,0 +1,62 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* procedurericalcolo_cogitoweb
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-23 10:54+0000\n"
+"PO-Revision-Date: 2016-09-23 10:54+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: procedurericalcolo_cogitoweb
+#: model:ir.actions.client,name:procedurericalcolo_cogitoweb.piano_conti_action
+msgid "Accounts Chart Button"
+msgstr "Bottone Piano Conti"
+
+#. module: procedurericalcolo_cogitoweb
+#: model:ir.ui.menu,name:procedurericalcolo_cogitoweb.Cogito_menu
+msgid "Cogito"
+msgstr "Cogito"
+
+#. module: procedurericalcolo_cogitoweb
+#. openerp-web
+#: code:addons/procedurericalcolo_cogitoweb/static/src/xml/RicalcoloPianoDeiConti.xml:10
+#, python-format
+msgid "Control Panel of the Accounts Chart recalculation"
+msgstr "Pannello di controllo del Ricalcolo del Piano dei conti"
+
+#. module: procedurericalcolo_cogitoweb
+#. openerp-web
+#: code:addons/procedurericalcolo_cogitoweb/static/src/xml/RicalcoloPianoDeiConti.xml:11
+#: model:ir.ui.menu,name:procedurericalcolo_cogitoweb.ricalcola_piano_conti_menu_item
+#, python-format
+msgid "Recalculate Accounts Chart"
+msgstr "Ricalcola il piano dei conti"
+
+#. module: procedurericalcolo_cogitoweb
+#. openerp-web
+#: code:addons/procedurericalcolo_cogitoweb/static/src/xml/RicalcoloStrutturaAlbero.xml:11
+#: model:ir.ui.menu,name:procedurericalcolo_cogitoweb.ricalcola_struttura_menu_item
+#, python-format
+msgid "Recalculate Tree"
+msgstr "Ricalcola Struttura Albero"
+
+#. module: procedurericalcolo_cogitoweb
+#: model:ir.actions.client,name:procedurericalcolo_cogitoweb.struttura_albero_action
+msgid "Tree Button"
+msgstr "Bottone Struttura Albero"
+
+#. module: procedurericalcolo_cogitoweb
+#. openerp-web
+#: code:addons/procedurericalcolo_cogitoweb/static/src/xml/RicalcoloStrutturaAlbero.xml:10
+#, python-format
+msgid "Tree Recalculation control panel"
+msgstr "Pannello di controllo del ricalcolo della struttura ad albero"
+

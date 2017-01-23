@@ -1,0 +1,25 @@
+.proc-ric-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 15px 0px 10px 0px;
+    color: #7C7BAD;
+}
+
+.proc-ric-container {
+    margin: 25px 20px;
+}
+
+.proc-ric-button {
+    display
+}
+
+
+#output_risultato{
+    display: none;
+    color: #7bad94;
+}
+
+#output_risultato.show{
+    display: inline !important;
+    margin-left: 10px; 
+}

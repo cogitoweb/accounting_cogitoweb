@@ -1,0 +1,22 @@
+<openerp>
+    <data>
+
+        <template id="assets_backend" name="ricalcolo_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/procedurericalcolo_cogitoweb/static/src/js/procedurericalcolo.js"/>
+                <link rel="stylesheet" href="/procedurericalcolo_cogitoweb/static/src/css/style.css"/>
+            </xpath>
+        </template> 
+        
+        <record id="piano_conti_action" model="ir.actions.client">
+            <field name="name">Accounts Chart Button</field>
+            <field name="tag">piano.conti</field>
+        </record>
+        
+        <record id="struttura_albero_action" model="ir.actions.client">
+            <field name="name">Tree Button</field>
+            <field name="tag">struttura.albero</field>
+        </record>
+               
+    </data>
+</openerp>
