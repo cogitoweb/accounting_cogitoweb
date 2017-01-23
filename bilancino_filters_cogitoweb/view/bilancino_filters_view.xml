@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record id="view_cogito_bilancino_filters_inherit" model="ir.ui.view">
+			<field name="name">Cogito bilancino filters</field>
+			<field name="model">account.balance.report</field>
+			<field name="inherit_id" ref="account.account_report_balance_view" />
+			<field name="priority">30</field>
+			<field name="arch" type="xml">
+
+				<xpath expr="//notebook/page[@string='Filters']" position="after">
+					<page string="Journals" name="journal_ids">
+						<field name="journal_ids"/>
+					</page>
+				</xpath>
+
+			</field>
+		</record>
+
+	</data>
+</openerp>
