@@ -25,5 +25,21 @@
 			</field>
 	    </record>
 
+
+        <record id="cogito_mutual_move_action" model="ir.actions.server">
+                <field name="name">cogito_mutual_move_action</field>
+                <field name="model_id" ref="account_move"/>
+                <field name="state">code</field>
+                <field name="condition">True</field>
+                <field name="code">if object: self.browse(context.get('active_ids', [])).generate_cogito_mutual()</field>
+        </record>
+        <record id="cogito_mutual_move_more_menu" model="ir.values">
+                <field name="name">Create Mutual</field>
+                <field name="model">account.move</field>
+                <field name="key" >action</field>
+                <field name="key2">client_action_multi</field>
+                <field name="value" eval="'ir.actions.server,%d'%cogito_mutual_move_action"/>
+        </record>
+
 	</data>
 </openerp>
