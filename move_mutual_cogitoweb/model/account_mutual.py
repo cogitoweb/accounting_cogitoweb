@@ -75,11 +75,13 @@ class cogito_account_mutual(models.Model):
             if s.ref == False:
                 # Se ref non e' definito, non posso cercare
                 messages += ("\nIl campo 'riferimento' non e' valido per il record %s" % s.id)
+                continue
 
             # Se esiste gia un duplicato, ferma tutto
             reciproco_id = s.cerca_reciproco(s.id, s.ref)
             if reciproco_id != False:
                 messages += ("\nIl reciproco il record %s esiste gia'" % s.id)
+                continue
 
             ref = "Storno %s" % s.ref
             duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref})
