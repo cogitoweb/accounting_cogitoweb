@@ -84,7 +84,7 @@ class cogito_account_mutual(models.Model):
             ref = "Storno %s" % s.ref
             duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref})
 
-            for row in duplicato_id.line_id:
+            for row in duplicato.line_id:
 
                 row.write(
                     {
