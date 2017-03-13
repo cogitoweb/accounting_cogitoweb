@@ -27,11 +27,11 @@
 
 
         <record id="cogito_mutual_move_action" model="ir.actions.server">
-                <field name="name">cogito_mutual_move_action</field>
-                <field name="model_id" ref="account_move"/>
+                <field name="name">Create mutual move</field>
+                <field name="model_id" ref="model_account_move"/>
                 <field name="state">code</field>
                 <field name="condition">True</field>
-                <field name="code">if object: self.browse(context.get('active_ids', [])).generate_cogito_mutual()</field>
+                <field name="code">if object: self.browse(cr, uid, context.get('active_ids', [])).generate_cogito_mutual()</field>
         </record>
         <record id="cogito_mutual_move_more_menu" model="ir.values">
                 <field name="name">Create Mutual</field>
