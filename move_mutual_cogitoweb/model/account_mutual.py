@@ -67,50 +67,38 @@ class cogito_account_mutual(models.Model):
 		# e invertine le colonne date/avere
 		# Impedisce di creare duplicati di duplicati
 
-	   tot_records = len(self)
-       	   processed_records = 0
-           messages = ""
-           for s in self:
+        tot_records = len(self)
+        processed_records = 0
+        messages = ""
+        for s in self:
 
-               if s.ref == False:
-                  # Se ref non e' definito, non posso cercare
-                  messages += ("\nIl campo 'riferimento' non e' valido per il record %s" % s.id)
+            if s.ref == False:
+                # Se ref non e' definito, non posso cercare
+                messages += ("\nIl campo 'riferimento' non e' valido per il record %s" % s.id)
 
-               # Se esiste gia un duplicato, ferma tutto
-               reciproco_id = s.cerca_reciproco(s.id, s.ref)
-               if reciproco_id != False:
-                  messages += ("\nIl reciproco il record %s esiste già" % s.id)
+            # Se esiste gia un duplicato, ferma tutto
+            reciproco_id = s.cerca_reciproco(s.id, s.ref)
+            if reciproco_id != False:
+                messages += ("\nIl reciproco il record %s esiste gia'" % s.id)
 
-               duplicato_id = super(cogito_account_mutual, s).copy(default={'name':"Storno " + s.ref, 'ref':"Storno " + s.ref})
-               #duplicato_obj = self.env['account.move'].browse(duplicato_id)
+            ref = "Storno %s" % s.ref
+            duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref})
 
-               # ### Query update nome/riferimento
-               #self.pool.get('account.move').write(self.env.cr, self.env.uid, [duplicato_id.id], {
-               #   'name':"Storno " + s.ref,
-               #   'ref':"Storno " + s.ref
-               #})
-               #_logger.info(pprint.pformat(duplicato_id))
-               #duplicato_id.name = "Storno " + s.ref
-               #duplicato_id.ref = "Storno " + s.ref
+            for row in duplicato_id.line_id:
 
-               for row in duplicato_id.line_id:
-
-                 debit_new = row.credit
-                 credit_new = row.debit
-
-                 row.write(
+                row.write(
                     {
-                        'debit': debit_new,
-                        'credit': credit_new
+                        'debit': row.credit,
+                        'credit': row.debit
                     }
-                 )
+                )
 
-               processed_records += 1
+            processed_records += 1
 
-           return {
+        return {
              'type': 'ir.actions.act_window.message',
              'title': _('Message'),
              'message': _("Created %s multual movements of %s moves selected" % (tot_records, processed_records)) + "\n\n" + messages,
              'close_button_title': _('Close'),
-           }
+        }
 
