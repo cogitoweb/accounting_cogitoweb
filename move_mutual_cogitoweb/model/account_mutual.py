@@ -2,6 +2,7 @@
 from openerp import models, fields, api, exceptions, _
 
 import datetime
+from dateutil import parser
 import pprint
 import logging
 _logger = logging.getLogger(__name__)
@@ -96,14 +97,14 @@ class cogito_account_mutual(models.Model):
             ref = "Storno %s" % s.ref
 
             # passo al giorno successivo
-            new_date = s.date + datetime.timedelta(days=1)
+            new_date = parser.parse(s.date) + datetime.timedelta(days=1)
             # Cerco un periodo corretto
             period = self.cerca_periodo(new_date)
             if(not period):
                 messages += ("\nIl periodo per la data %s non esiste" % new_date)
                 continue
 
-            duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref, 'date': date, 'period_id': period.id})
+            duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref, 'date': new_date, 'period_id': period.id})
 
             for row in duplicato.line_id:
 
