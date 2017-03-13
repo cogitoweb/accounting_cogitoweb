@@ -98,7 +98,7 @@ class cogito_account_mutual(models.Model):
 
             processed_records += 1
 
-        out_msg = _("Created %s multual movements of %s moves selected" % (tot_records, processed_records)) + "\n\n" + messages
+        out_msg = _("Created %s multual movements of %s moves selected" % (tot_records, processed_records)) + "\n" + messages
         _logger.info(out_msg)
 
         return {'type': 'ir.actions.act_window.message',
