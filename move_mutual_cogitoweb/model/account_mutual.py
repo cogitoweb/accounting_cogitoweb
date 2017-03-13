@@ -59,7 +59,6 @@ class cogito_account_mutual(models.Model):
             # Se duplicato non esiste, avvisa
             raise exceptions.ValidationError("Non esiste un reciproco")
 
-    @api.model
     @api.multi
     def generate_cogito_mutual(self):
         # Duplica un record di account_mode lanciando super().copy()
