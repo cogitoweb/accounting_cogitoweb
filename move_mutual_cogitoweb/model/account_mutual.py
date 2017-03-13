@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp import models, fields, api, exceptions, _
 
+import datetime
 import pprint
 import logging
 _logger = logging.getLogger(__name__)
@@ -32,6 +33,15 @@ class cogito_account_mutual(models.Model):
             # Gestisce il caso in cui non esista un duplicato
             # o se per errore ne esitono piu di uno
             return False
+
+    def cerca_periodo(self, data):
+
+        periods = self.env['account.period'].search([('special', '=', False), ('date_start', '<=', data), ('date_stop', '>=', data)])
+
+        if(periods):
+            return periods[0]
+
+        return False
 
     @api.multi
     def visit_cogito_mutual(self):
@@ -84,7 +94,16 @@ class cogito_account_mutual(models.Model):
                 continue
 
             ref = "Storno %s" % s.ref
-            duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref})
+
+            # passo al giorno successivo
+            new_date = s.date + datetime.timedelta(days=1)
+            # Cerco un periodo corretto
+            period = self.cerca_periodo(new_date)
+            if(not period):
+                messages += ("\nIl periodo per la data %s non esiste" % new_date)
+                continue
+
+            duplicato = super(cogito_account_mutual, s).copy(default={'name':ref, 'ref':ref, 'date': date, 'period_id': period.id})
 
             for row in duplicato.line_id:
 
