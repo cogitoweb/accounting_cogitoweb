@@ -69,7 +69,7 @@ class cogito_account_mutual(models.Model):
 
         tot_records = len(self)
         processed_records = 0
-        messages = ""
+        messages = " // "
         for s in self:
 
             if s.ref == False:
