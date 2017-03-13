@@ -101,4 +101,3 @@ class cogito_account_mutual(models.Model):
              'message': _("Created %s multual movements of %s moves selected" % (tot_records, processed_records)) + "\n\n" + messages,
              'close_button_title': _('Close'),
         }
-
