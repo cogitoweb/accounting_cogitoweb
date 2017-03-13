@@ -61,11 +61,11 @@ class cogito_account_mutual(models.Model):
 
 	@api.multi
 	def generate_cogito_mutual(self):
-		# Duplica un record di account_mode lanciando super().copy() 
-		# e tutte le account_move_line collegate.
-		# Lancia una query per trovare le account_move_line collegate
-		# e invertine le colonne date/avere
-		# Impedisce di creare duplicati di duplicati
+        # Duplica un record di account_mode lanciando super().copy()
+        # e tutte le account_move_line collegate.
+        # Lancia una query per trovare le account_move_line collegate
+        # e invertine le colonne date/avere
+        # Impedisce di creare duplicati di duplicati
 
         tot_records = len(self)
         processed_records = 0
