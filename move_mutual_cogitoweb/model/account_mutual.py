@@ -59,6 +59,7 @@ class cogito_account_mutual(models.Model):
             # Se duplicato non esiste, avvisa
             raise exceptions.ValidationError("Non esiste un reciproco")
 
+    @api.model
     @api.multi
     def generate_cogito_mutual(self):
         # Duplica un record di account_mode lanciando super().copy()
@@ -97,9 +98,10 @@ class cogito_account_mutual(models.Model):
 
             processed_records += 1
 
-        return {
-             'type': 'ir.actions.act_window.message',
+        out_msg = _("Created %s multual movements of %s moves selected" % (tot_records, processed_records)) + "\n\n" + messages
+        _logger.info(out_msg)
+
+        return {'type': 'ir.actions.act_window.message',
              'title': _('Message'),
-             'message': _("Created %s multual movements of %s moves selected" % (tot_records, processed_records)) + "\n\n" + messages,
-             'close_button_title': _('Close')
-            }
+             'message': out_msg,
+             'close_button_title': _('Close')}
