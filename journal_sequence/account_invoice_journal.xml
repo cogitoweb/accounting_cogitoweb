@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- sequence number per ordinamento in account_journal -->
+        <record id="cogitoweb_account_journal_view" model="ir.ui.view">
+            <field name="name">CogitoWeb Account Journal</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form" />
+            <field name="sequence">30</field>
+            <field name="arch" type="xml">
+
+                <field name="group_invoice_lines" position="after">
+                    <field name="sequence"/>
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

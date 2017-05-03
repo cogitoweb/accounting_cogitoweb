@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- seleziona account_analytic chiusi nelle fatture -->
+		<record id="cogitoweb_account_invoice_line_view" model="ir.ui.view">
+			<field name="name">CogitoWeb Account Invoice Line</field>
+			<field name="model">account.invoice.line</field>
+			<field name="inherit_id" ref="account.view_invoice_line_form" />
+			<field name="sequence">30</field>
+			<field name="arch" type="xml">
+
+				<field name="account_analytic_id" position="attributes">
+					<attribute name="domain">"[('type', '&lt;&gt;', 'view'), ('company_id', '=', parent.company_id), ('state', '&lt;&gt;', 'cancelled')]"</attribute>
+				</field>
+
+			</field>
+		</record>
+
+	</data>
+</openerp>
