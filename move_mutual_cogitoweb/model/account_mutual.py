@@ -23,6 +23,8 @@ class cogito_account_mutual(models.Model):
                 SELECT * FROM account_move
                 WHERE ref = %s AND id <> %s
             """
+        
+        _logger.info("search for %s %s" % (search_ref, search_id))
 
         self.env.cr.execute(query_search, (search_ref, search_id))
         query_result = self.env.cr.dictfetchall()
@@ -33,6 +35,7 @@ class cogito_account_mutual(models.Model):
         else:
             # Gestisce il caso in cui non esista un duplicato
             # o se per errore ne esitono piu di uno
+            _logger.info("multiple results found for %s %s" % (search_ref, search_id))
             return False
 
     def cerca_periodo(self, data):
