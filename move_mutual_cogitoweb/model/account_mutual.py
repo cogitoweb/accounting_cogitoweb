@@ -21,10 +21,10 @@ class cogito_account_mutual(models.Model):
 
         query_search = """
                 SELECT * FROM account_move
-                WHERE ref LIKE '%%%s%%' AND id <> '%d'
-            """ % (search_ref, search_id)
+                WHERE ref = s% AND id <> %s
+            """
 
-        self.env.cr.execute(query_search)
+        self.env.cr.execute(query_search, (search_ref, search_id))
         query_result = self.env.cr.dictfetchall()
         num_result = len(query_result)
 
